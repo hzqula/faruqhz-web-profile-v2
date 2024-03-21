@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+:root {
+  --primary-color: #081c15;
+  --secondary-color: #2d6a4f;
+  --white-color: #fefae0;
+  --black-color: #212529;
+  --bg-white: #f1faee;
+  --title: 900 3rem/1.5 "Josefin Sans", sans-serif;
+  --sub-title: 700 1.8rem/1.2 "Josefin Sans", sans-serif;
+  --paragraph: 400 1.2rem/1.5 "Josefin Sans", sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .custom-shadow {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 20px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+@layer base {
+  body {
+    @apply font-primary bg-bgWhite;
+  }
+
+  a {
+    @apply text-customWhite;
+  }
+
+  p {
+    @apply text-secondary;
+  }
+}
+
+* {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.hamburger-line {
+  @apply w-[28px] h-[3px] my-1 block bg-secondary;
+}
+
+.hamburger-active > span {
+  @apply my-4;
+}
+
+.hamburger-active > span:nth-child(1) {
+  @apply rotate-45;
+}
+
+.hamburger-active > span:nth-child(2) {
+  @apply hidden;
+}
+
+.hamburger-active > span:nth-child(3) {
+  @apply -rotate-45;
+}
+
+.p-bold {
+  @apply text-paragraph text-primary tracking-[0.8px] font-bold;
+}
+
+.p-ibold {
+  @apply text-paragraph text-primary tracking-[0.8px] font-bold italic;
+}
+
+p {
+  @apply text-paragraph text-secondary tracking-[0.8px];
+}
+
+.btn-primary {
+  @apply border-none py-4 px-0 my-8 mx-[0.1rem] inline-flex items-center justify-around font-subTitle text-primary text-subTitle relative;
+}
+
+.btn-primary::after {
+  content: "";
+  @apply w-0 h-[4px] inline-block absolute bottom-0 left-0 bg-primary transition-all duration-[400ms];
+}
+
+.btn-primary:hover::after {
+  @apply w-full transition-all duration-[400ms];
+}
+
+.btn-secondary {
+  @apply border-[2px] border-solid border-primary rounded-[0.25rem] pt-4 pr-8 pb-[0.7rem] pl-8 my-8 mx-[0.1rem] inline-flex items-center justify-around font-[600] text-subTitle relative text-secondary text-[1.2rem] transition-all duration-[400ms];
+}
+
+.btn-secondary::after {
+  content: "";
+  @apply w-0 h-full inline-block absolute bottom-0 left-0 bg-primary transition-all duration-[400ms] z-[-1];
+}
+
+.btn-secondary:hover {
+  @apply text-customWhite transition-all duration-[400ms];
+}
+
+.btn-secondary:hover::after {
+  @apply w-full transition-all duration-[400ms];
+}
+
+.decoration {
+  @apply relative mb-4;
+}
+
+.decoration .line-1,
+.decoration .line-2 {
+  @apply inline-block w-16 h-2 bg-secondary m-0.5;
+}
+
+.decoration .line-2 {
+  @apply inline-block w-24 h-2 bg-primary;
+}
+
+.icon {
+  @apply ml-2 mb-[0.4rem];
+}
+
+::placeholder {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  .timeline .timeline-wrapper .timeline-items div {
+    width: 250px;
+  }
+  .timeline .timeline-wrapper li:nth-child(even) div {
+    left: -289px;
+    /*250+45-6*/
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .timeline .timeline-wrapper .timeline-items {
+    margin-left: 20px;
+  }
+  .timeline .timeline-wrapper .timeline-items div {
+    width: calc(100vw - 91px);
+  }
+  .timeline .timeline-wrapper li:nth-child(even) div {
+    left: 45px;
+  }
+  .timeline .timeline-wrapper li:nth-child(even) div::before {
+    left: -15px;
+    border-width: 8px 16px 8px 0;
+    border-color: transparent var(--secondary-color) transparent transparent;
+  }
+}
+
+.timeline .timeline-wrapper li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: inherit;
+  z-index: 1;
+}
+
+.timeline .timeline-wrapper .timeline-items div::before {
+  content: "";
+  position: absolute;
+  bottom: 7px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline .timeline-wrapper li:nth-child(odd) div {
+  left: 45px;
+}
+
+.timeline .timeline-wrapper li:nth-child(odd) div::before {
+  left: -15px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent var(--secondary-color) transparent transparent;
+}
+
+.timeline .timeline-wrapper li:nth-child(even) div {
+  left: -439px;
+}
+
+.timeline .timeline-wrapper li:nth-child(even) div::before {
+  right: -15px;
+  border-width: 8px 0 8px 16px;
+  border-color: transparent transparent transparent var(--secondary-color);
+}
+
+.main-content .logo a {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+.main-content .logo .teks-logo {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.main-content .logo a:hover {
+  color: var(--secondary-color);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+.logo {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+}
+
+.logo a {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+.logo .teks-logo {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.logo a:hover {
+  color: var(--secondary-color);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+.card:hover,
+.card:focus-within {
+  box-shadow: 0 0 0 2px var(--primary-color), 0 10px 60px 0 rgba(0, 0, 0, 0.1);
+  transform: translatey(-5px);
+}
+
+.card-header a:after {
+  content: "";
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.icon-button:hover,
+.icon-button:focus {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  color: #787878;
+}
+.card-meta:first-child:after {
+  display: block;
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: currentcolor;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.card-meta--date ion-icon {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.card-meta--views ion-icon {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.25rem;
+}
